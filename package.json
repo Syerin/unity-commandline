@@ -5,6 +5,6 @@
 	"description": "A tiny app-wide command-line argument system. Windows-style /switch and /switch:value, parsed once and dispatched to modules. Engine-free, no dependencies.",
 	"unity": "2021.3",
 	"keywords": [ "command line", "arguments", "cli", "launch options" ],
-	"author": { "name": "yourname", "url": "https://github.com/yourname" },
+	"author": { "name": "Syerin", "url": "https://github.com/Syerin" },
 	"license": "MIT"
 }
