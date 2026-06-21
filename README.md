@@ -52,11 +52,6 @@ grammar as launch args.
 
 Switch names are case-insensitive.
 
-## Why separate from logging
-
-This knows nothing about logging. Logging happens to be one consumer that ships a module for it. Keeping
-it standalone means projects that only want argument parsing don't pull a logger, and vice versa.
-
 ## License
 
 MIT — see [LICENSE](LICENSE).
