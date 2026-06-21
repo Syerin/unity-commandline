@@ -1,5 +1,5 @@
 {
-	"name": "com.yourname.commandline",
+	"name": "com.Syerin.commandline",
 	"version": "1.0.0",
 	"displayName": "CommandLineSystem",
 	"description": "A tiny app-wide command-line argument system. Windows-style /switch and /switch:value, parsed once and dispatched to modules. Engine-free, no dependencies.",
