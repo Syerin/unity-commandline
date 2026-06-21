@@ -1,10 +1,18 @@
 {
 	"name": "com.syerin.commandline",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"displayName": "CommandLineSystem",
 	"description": "A tiny app-wide command-line argument system. Windows-style /switch and /switch:value, parsed once and dispatched to modules. Engine-free, no dependencies.",
 	"unity": "2021.3",
-	"keywords": [ "command line", "arguments", "cli", "launch options" ],
-	"author": { "name": "syerin", "url": "https://github.com/syerin" },
+	"keywords": [
+		"command line",
+		"arguments",
+		"cli",
+		"launch options"
+	],
+	"author": {
+		"name": "syerin",
+		"url": "https://github.com/syerin"
+	},
 	"license": "MIT"
 }

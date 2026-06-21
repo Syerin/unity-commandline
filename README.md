@@ -19,17 +19,26 @@ Pin with a tag: `…/unity-commandline.git#v1.0.0`.
 
 ## Usage
 
-Implement `ICliModule` per subsystem, then initialize once at startup:
+Implement `ICliModule` per subsystem — declare its `Name` and `Commands` (for `/help`), and apply args in
+`Bind` — then initialize once at startup:
 
 ```csharp
 using CommandLineSystem;
+using System.Collections.Generic;
 
 public sealed class GraphicsCliModule : ICliModule
 {
+    public string Name => "graphics";
+    public IReadOnlyList<CliCommand> Commands { get; } = new[]
+    {
+        new CliCommand("/width:<n>", "render width"),
+        new CliCommand("/vsync",     "enable vsync"),
+    };
+
     public void Bind(CliArgs args)
     {
-        if (args.Get("width")  is string w && int.TryParse(w, out int width))  { /* … */ }
-        if (args.Has("vsync"))  { /* … */ }
+        if (args.Get("width") is string w && int.TryParse(w, out int width)) { /* … */ }
+        if (args.Has("vsync")) { /* … */ }
     }
 }
 
@@ -41,6 +50,14 @@ Cli.Initialize(new GraphicsCliModule() /*, other modules … */);
 `Cli.Initialize` parses `Environment.GetCommandLineArgs()` and calls every module's `Bind`. The parser is
 also reusable on its own — `CliArgs.Parse(tokens)` — for example to feed an in-game console the same
 grammar as launch args.
+
+### /help is built in
+
+`/help` and `/?` belong to this package, not to any subsystem. They list the commands of **every**
+registered module (graphics, logging, whatever you pass to `Initialize`). At launch, `/help` prints the
+list to stdout; for an in-game console, call `Cli.GetUsage()` to show the same text. Registering the same
+command from two modules — or trying to shadow `/help` — throws `InvalidOperationException` at
+`Initialize`, so collisions surface immediately instead of silently winning.
 
 ### Grammar
 
